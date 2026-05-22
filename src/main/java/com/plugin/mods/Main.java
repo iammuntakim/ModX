@@ -32,18 +32,18 @@ public class Main implements ClientModInitializer {
                 "key.mods.exit_app",
                 InputConstants.Type.KEYSYM,
                 CONFIG.isComboMode ? GLFW.GLFW_KEY_E : CONFIG.singleKey,
-                KeyMapping.CATEGORY_INTERFACE
+                "key.categories.ui"
         );
     }
 
     public static void client_tick(Minecraft client) {
         if (client.player == null) return;
 
-        long windowHandle = client.getWindow().getWindow();
+        com.mojang.blaze3d.platform.Window window = client.getWindow();
         
         if (CONFIG.isComboMode) {
-            boolean isF3Down = InputConstants.isKeyDown(windowHandle, GLFW.GLFW_KEY_F3);
-            boolean isEDown = InputConstants.isKeyDown(windowHandle, GLFW.GLFW_KEY_E);
+            boolean isF3Down = InputConstants.isKeyDown(window, GLFW.GLFW_KEY_F3);
+            boolean isEDown = InputConstants.isKeyDown(window, GLFW.GLFW_KEY_E);
             
             if (isF3Down && isEDown) {
                 exitApplication(client);
@@ -140,9 +140,8 @@ public class Main implements ClientModInitializer {
         }
 
         @Override
-        public boolean keyPressed(net.minecraft.client.gui.navigation.KeyEvent event) {
+        public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
             if (waitingForKey) {
-                int keyCode = event.code();
                 if (keyCode == GLFW.GLFW_KEY_ESCAPE) {
                     CONFIG.singleKey = GLFW.GLFW_KEY_UNKNOWN;
                 } else {
@@ -154,12 +153,12 @@ public class Main implements ClientModInitializer {
                 recreateControls();
                 return true;
             }
-            return super.keyPressed(event);
+            return super.keyPressed(keyCode, scanCode, modifiers);
         }
 
         @Override
-        public void render(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float tickDelta) {
-            super.render(graphics, mouseX, mouseY, tickDelta);
+        public void extractRenderState(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float tickDelta) {
+            super.extractRenderState(graphics, mouseX, mouseY, tickDelta);
             int centerX = width / 2;
             int y = height / 2 - 40;
             graphics.centeredText(font, title, centerX, y - 24, 0xFFFFFF);
