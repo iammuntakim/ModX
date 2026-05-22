@@ -17,7 +17,6 @@ repositories {
 		url = "https://maven.terraformersmc.com/"
 	}
 }
-
 fabricApi {
 	configureDataGeneration {
 		client = true
