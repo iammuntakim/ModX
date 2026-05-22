@@ -32,7 +32,7 @@ public class Main implements ClientModInitializer {
                 "key.mods.exit_app",
                 InputConstants.Type.KEYSYM,
                 CONFIG.isComboMode ? GLFW.GLFW_KEY_E : CONFIG.singleKey,
-                "key.categories.misc"
+                new KeyMapping.Category(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("minecraft", "misc"))
         );
     }
 
@@ -140,8 +140,9 @@ public class Main implements ClientModInitializer {
         }
 
         @Override
-        public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
+        public boolean keyPressed(net.minecraft.client.gui.navigation.KeyEvent event) {
             if (waitingForKey) {
+                int keyCode = event.keyCode();
                 if (keyCode == GLFW.GLFW_KEY_ESCAPE) {
                     CONFIG.singleKey = GLFW.GLFW_KEY_UNKNOWN;
                 } else {
@@ -153,12 +154,12 @@ public class Main implements ClientModInitializer {
                 recreateControls();
                 return true;
             }
-            return super.keyPressed(keyCode, scanCode, modifiers);
+            return super.keyPressed(event);
         }
 
         @Override
-        public void render(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float tickDelta) {
-            super.render(graphics, mouseX, mouseY, tickDelta);
+        public void extractRenderState(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float tickDelta) {
+            super.extractRenderState(graphics, mouseX, mouseY, tickDelta);
             int centerX = width / 2;
             int y = height / 2 - 40;
             graphics.centeredText(font, title, centerX, y - 24, 0xFFFFFF);
