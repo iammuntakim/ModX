@@ -32,7 +32,7 @@ public class Main implements ClientModInitializer {
                 "key.mods.exit_app",
                 InputConstants.Type.KEYSYM,
                 CONFIG.isComboMode ? GLFW.GLFW_KEY_E : CONFIG.singleKey,
-                "key.categories.ui"
+                "key.categories.misc"
         );
     }
 
@@ -157,8 +157,8 @@ public class Main implements ClientModInitializer {
         }
 
         @Override
-        public void extractRenderState(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float tickDelta) {
-            super.extractRenderState(graphics, mouseX, mouseY, tickDelta);
+        public void render(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float tickDelta) {
+            super.render(graphics, mouseX, mouseY, tickDelta);
             int centerX = width / 2;
             int y = height / 2 - 40;
             graphics.centeredText(font, title, centerX, y - 24, 0xFFFFFF);
