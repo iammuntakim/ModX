@@ -1,7 +1,7 @@
-package org.ma.airjump.mixin;
+package com.plugin.mods.mixin;
 
 import net.minecraft.client.Minecraft;
-import org.ma.airjump.AirJump;
+import com.plugin.mods.AirJump;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

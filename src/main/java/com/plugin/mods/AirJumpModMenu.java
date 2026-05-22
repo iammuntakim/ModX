@@ -1,4 +1,4 @@
-package org.ma.airjump;
+package com.plugin.mods;
 
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;

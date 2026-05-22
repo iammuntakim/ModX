@@ -14,10 +14,10 @@
     "environment": "client",
     "entrypoints": {
         "client": [
-            "org.ma.airjump.AirJump"
+            "com.plugin.mods.AirJump"
         ],
         "modmenu": [
-            "org.ma.airjump.AirJumpModMenu"
+            "com.plugin.mods.AirJumpModMenu"
         ]
     },
 

@@ -1,4 +1,4 @@
-package org.ma.airjump;
+package com.plugin.mods;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
