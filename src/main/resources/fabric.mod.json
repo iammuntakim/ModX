@@ -1,0 +1,32 @@
+{
+    "schemaVersion": 1,
+    "id": "airjump",
+    "version": "${version}",
+
+    "name": "AirJump",
+    "description": "This is a client-side mod that helps users to fly.\nMod Features: \n    - AirJump (You can jump even you are in mid-air)\n    - SuperLaunch (Hold SuperLaunch item on MainHand or OffHand and use right click to launch forward)\n    - NoFall (No Fall damage)(Not work when hold mace in the MainHand and ware elytra)",
+    "authors": ["MIKAILAMIN"],
+    "contact": {},
+
+    "license": "All-Rights-Reserved",
+    "icon": "assets/icon.png",
+
+    "environment": "client",
+    "entrypoints": {
+        "client": [
+            "org.ma.airjump.AirJump"
+        ],
+        "modmenu": [
+            "org.ma.airjump.AirJumpModMenu"
+        ]
+    },
+
+    "mixins": [
+        "airjump.mixins.json"
+    ],
+
+    "depends": {
+        "fabricloader": ">=${loader_version}",
+        "minecraft": "${minecraft_version}"
+    }
+}
