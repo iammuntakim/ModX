@@ -1,11 +1,11 @@
 {
     "schemaVersion": 1,
-    "id": "airjump",
+    "id": "Mods",
     "version": "${version}",
 
-    "name": "AirJump",
-    "description": "This is a client-side mod that helps users to fly.\nMod Features: \n    - AirJump (You can jump even you are in mid-air)\n    - SuperLaunch (Hold SuperLaunch item on MainHand or OffHand and use right click to launch forward)\n    - NoFall (No Fall damage)(Not work when hold mace in the MainHand and ware elytra)",
-    "authors": ["MIKAILAMIN"],
+    "name": "Mods",
+    "description": "This is a client-side utility mod that allows users to bind a custom hotkey configuration or use the default F3+E keyboard combination to instantaneously close down and terminate the active game instance application safely.",
+    "authors": ["MUNTAKIM"],
     "contact": {},
 
     "license": "All-Rights-Reserved",
@@ -14,15 +14,15 @@
     "environment": "client",
     "entrypoints": {
         "client": [
-            "com.plugin.mods.AirJump"
+            "com.plugin.mods.Main"
         ],
         "modmenu": [
-            "com.plugin.mods.AirJumpModMenu"
+            "com.plugin.mods.ModMenu"
         ]
     },
 
     "mixins": [
-        "airjump.mixins.json"
+        "mods.mixins.json"
     ],
 
     "depends": {
