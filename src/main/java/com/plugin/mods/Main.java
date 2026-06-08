@@ -22,7 +22,7 @@ import java.util.Set;
 public class Main implements ClientModInitializer {
 
     private static boolean enabled = false;
-    private static long lastToggle = 0;
+    private static long last = 0;
     private static final Set<Integer> keys = new HashSet<>();
 
     @Override
@@ -36,15 +36,15 @@ public class Main implements ClientModInitializer {
             boolean f3 = InputUtil.isKeyPressed(window, GLFW.GLFW_KEY_F3);
             boolean d = InputUtil.isKeyPressed(window, GLFW.GLFW_KEY_D);
 
-            int key = (GLFW.GLFW_KEY_F3 * 31) + GLFW.GLFW_KEY_D;
+            int k = (GLFW.GLFW_KEY_F3 * 31) + GLFW.GLFW_KEY_D;
 
             if (f3 && d) {
-                if (!keys.contains(key)) {
-                    keys.add(key);
+                if (!keys.contains(k)) {
+                    keys.add(k);
                     toggle();
                 }
             } else {
-                keys.remove(key);
+                keys.remove(k);
             }
         });
 
@@ -63,19 +63,19 @@ public class Main implements ClientModInitializer {
 
                 Box box = e.getBoundingBox().offset(-cam.x, -cam.y, -cam.z);
 
-                renderBox(box);
+                draw(box);
             }
         });
     }
 
     private static void toggle() {
         long now = System.currentTimeMillis();
-        if (now - lastToggle < 250) return;
-        lastToggle = now;
+        if (now - last < 250) return;
+        last = now;
         enabled = !enabled;
     }
 
-    private static void renderBox(Box box) {
+    private static void draw(Box box) {
 
         MinecraftClient client = MinecraftClient.getInstance();
         if (client.world == null) return;
@@ -85,10 +85,10 @@ public class Main implements ClientModInitializer {
 
         VertexConsumer vc = immediate.getBuffer(RenderLayer.getLines());
 
-        float r = 1.0f;
+        float r = 1f;
         float g = 0.2f;
         float b = 0.2f;
-        float a = 1.0f;
+        float a = 1f;
 
         WorldRenderer.drawBox(
                 vc,
